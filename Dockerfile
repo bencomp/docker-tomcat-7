@@ -10,7 +10,7 @@ RUN (wget -O /tmp/tomcat7.tar.gz http://mirror.cogentco.com/pub/apache/tomcat/to
 	mv /opt/apache-tomcat* /opt/tomcat && \
 	rm /tmp/tomcat7.tar.gz)
 	
-ADD ./run.sh /usr/local/bin/run
+#ADD ./run.sh /usr/local/bin/run
 
 EXPOSE 8080
 
