@@ -11,6 +11,18 @@ RUN (wget -O /tmp/tomcat7.tar.gz http://mirror.cogentco.com/pub/apache/tomcat/to
 	mv /opt/apache-tomcat* /opt/tomcat && \
 	rm /tmp/tomcat7.tar.gz)
 
+# download and extract Quoddy code
+RUN (wget -O /tmp/quoddy.tar.gz https://github.com/fogbeam/Quoddy/archive/v0.0.0-tpr1.tar.gz && \
+	cd /opt && \
+	tar zxf /tmp/quoddy.tar.gz && \
+	rm /tmp/quoddy.tar.gz)
+
+# download Quoddy WAR
+RUN wget -O /opt/tomcat/webapps/quoddy.war https://github.com/fogbeam/Quoddy/releases/download/v0.0.0-tpr1/quoddy.war
+
+# Postgres should be running at this point.
+# Database initialisation should happen in the database container
+
 #start script which first updates web.xml before starting server.	
 ADD ./runserver.sh /usr/local/bin/run
 
